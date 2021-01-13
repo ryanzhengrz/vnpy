@@ -42,8 +42,10 @@ STATUS_OKEXS2VT = {
 
 ORDERTYPE_OKEXS2VT = {
     "0": OrderType.LIMIT,
-    "1": OrderType.MARKET,
-    "4": OrderType.MARKET,
+    "1": OrderType.LIMIT,
+    "2": OrderType.FOK,
+    "3": OrderType.FAK,
+    "4": OrderType.MARKET
 }
 
 TYPE_OKEXS2VT = {
@@ -750,13 +752,13 @@ class OkexsWebsocketApi(WebsocketClient):
 
         bids = d["bids"]
         asks = d["asks"]
-        for n, buf in enumerate(bids):
-            price, volume, _, __ = buf
+        for n in range(min(5, len(bids))):
+            price, volume, _ = bids[n]
             tick.__setattr__("bid_price_%s" % (n + 1), float(price))
             tick.__setattr__("bid_volume_%s" % (n + 1), int(volume))
 
-        for n, buf in enumerate(asks):
-            price, volume, _, __ = buf
+        for n in range(min(5, len(asks))):
+            price, volume, _ = asks[n]
             tick.__setattr__("ask_price_%s" % (n + 1), float(price))
             tick.__setattr__("ask_volume_%s" % (n + 1), int(volume))
 
