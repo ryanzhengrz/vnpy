@@ -1,3 +1,8 @@
+'''
+This initialization is mostly to initialize setting. The "initialize.py" is to initialize database according to driver type.
+'''
+
+
 import os
 from typing import TYPE_CHECKING
 

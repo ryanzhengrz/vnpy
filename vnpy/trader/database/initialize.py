@@ -1,3 +1,7 @@
+'''
+This initialization is mostly to initialize database according to driver type. The "__init__.py" is to initialize setting.
+'''
+
 """"""
 from .database import BaseDatabaseManager, Driver
 
