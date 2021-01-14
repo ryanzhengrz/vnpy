@@ -21,6 +21,7 @@ dist
 
 # vn.py
 .vntrader
+.vnstation
 
 # Visual Studio intermediate files
 *.exp
